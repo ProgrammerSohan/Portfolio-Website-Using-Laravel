@@ -1,9 +1,9 @@
- @extends('layouts.layout')
+ @extends('admin.layouts.layout')
  
  @section('content')
 
 
-             <section class="section">
+        <section class="section">
           <div class="section-header">
             <h1>Dashboard</h1>
           </div>
