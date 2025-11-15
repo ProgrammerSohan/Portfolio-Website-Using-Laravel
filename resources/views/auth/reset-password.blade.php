@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Forget Password</title>
+  <title>Reset Password</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Forget Password</h4></div>
+              <div class="card-header"><h4>Reset Password</h4></div>
 
 
               <div class="card-body">
@@ -45,7 +45,7 @@
 
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" tabindex="1" required autofocus>
+                    <input id="email" type="email" class="form-control" name="email" value="{{$request->email}}" tabindex="1" required autofocus>
                      @if ($errors->has('email'))
                          <code>{{$errors->first('email')}}</code>
                      @endif
