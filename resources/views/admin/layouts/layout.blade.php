@@ -20,6 +20,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
+
 </head>
 
 <body>
@@ -73,6 +74,10 @@
   <script src="{{asset('assets/js/page/features-post-create.js')}}"></script>
   <!-- Page Specific JS File -->
   <script src="{{asset('assets/js/page/forms-advanced-forms.js')}}"></script>
+
+ 
+  
+
 </body>
 </html>
 
