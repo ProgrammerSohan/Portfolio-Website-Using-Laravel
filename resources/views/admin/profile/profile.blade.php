@@ -69,7 +69,7 @@
           <!-- SINGLE FORM -->
           <form method="post" action="{{ route('password.update') }}" class="needs-validation" novalidate>
             @csrf
-           @method('patch')
+           @method('put')
 
             <div class="card-header">
               <h4>Update Password</h4>
@@ -78,42 +78,32 @@
             <div class="card-body">
               <div class="row">
 
-                <div class="form-group col-md-6 col-12">
+                <div class="form-group  col-12">
                   <label>Current Password</label>
-                  <input type="password"
-                         class="form-control @error('current_password') is-invalid @enderror"
-                         name="current_password"
-                         autocomplete="current-password">
-
-                  @error('current_password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <input type="password" class="form-control" name="current_password" autocomplete="current-password">
+                  @if ($errors->updatePassword->has('current_password'))
+                    <code>{{$errors->updatePassword->first('current_password')}}</code>
+                  @endif
                 </div>
 
-                 <div class="form-group col-md-6 col-12">
+                 <div class="form-group  col-12">
                   <label>New Password</label>
-                  <input type="password"
-                         class="form-control @error('password') is-invalid @enderror"
-                         name="password"
-                         autocomplete="new-password">
-
-                  @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <input type="password" class="form-control" name="password" autocomplete="new-password">
+                  @if ($errors->updatePassword->has('password'))
+                    <code>{{$errors->updatePassword->first('password')}}</code>
+                  @endif
                 </div>
 
-                  <div class="form-group col-md-6 col-12">
+
+                <div class="form-group  col-12">
                   <label>Confirm Password</label>
-                  <input type="password"
-                         class="form-control @error('password_confirmation') is-invalid @enderror"
-                         name="password_confirmation"
-                         autocomplete="new-password">
-
-                  @error('password_confirmation')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <input type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                  @if ($errors->updatePassword->has('password_confirmation'))
+                    <code>{{$errors->updatePassword->first('password_confirmation')}}</code>
+                  @endif
                 </div>
 
+                 
              
 
               </div>
