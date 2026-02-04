@@ -22,13 +22,12 @@
         <div class="card">
 
           <!-- SINGLE FORM -->
-          <form method="POST" action="{{ route('profile.update') }}" class="needs-validation" novalidate>
+          <form method="post" action="{{ route('profile.update') }}" class="needs-validation" novalidate>
             @csrf
-            {{-- Use this ONLY if route is PATCH --}}
-            {{-- @method('patch') --}}
+            @method('patch')
 
             <div class="card-header">
-              <h4>Edit Profile</h4>
+              <h4>Profile Information</h4>
             </div>
 
             <div class="card-body">
@@ -36,28 +35,19 @@
 
                 <div class="form-group col-md-6 col-12">
                   <label>Name</label>
-                  <input type="text"
-                         class="form-control @error('name') is-invalid @enderror"
-                         name="name"
-                         value="{{ old('name', $user->name) }}"
-                         required>
+                 <input type="text" class="form-control" name="name" value="{{old('name',$user->name)}}" required="">
+                 @if ($errors->has('name'))
+                    <code>{{$errors->first('name')}}</code>
+                 @endif
 
-                  @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
                 </div>
 
                 <div class="form-group col-md-6 col-12">
                   <label>Email</label>
-                  <input type="email"
-                         class="form-control @error('email') is-invalid @enderror"
-                         name="email"
-                         value="{{ old('email', $user->email) }}"
-                         required>
-
-                  @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <input type="email" class="form-control" name="email" value="{{old('email',$user->email)}}" required="">
+                 @if ($errors->has('email'))
+                    <code>{{$errors->first('email')}}</code>
+                 @endif
                 </div>
 
               </div>
@@ -73,6 +63,73 @@
           <!-- END FORM -->
 
         </div>
+
+        <div class="card">
+
+          <!-- SINGLE FORM -->
+          <form method="post" action="{{ route('password.update') }}" class="needs-validation" novalidate>
+            @csrf
+           @method('patch')
+
+            <div class="card-header">
+              <h4>Update Password</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+
+                <div class="form-group col-md-6 col-12">
+                  <label>Current Password</label>
+                  <input type="password"
+                         class="form-control @error('current_password') is-invalid @enderror"
+                         name="current_password"
+                         autocomplete="current-password">
+
+                  @error('current_password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+                </div>
+
+                 <div class="form-group col-md-6 col-12">
+                  <label>New Password</label>
+                  <input type="password"
+                         class="form-control @error('password') is-invalid @enderror"
+                         name="password"
+                         autocomplete="new-password">
+
+                  @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+                </div>
+
+                  <div class="form-group col-md-6 col-12">
+                  <label>Confirm Password</label>
+                  <input type="password"
+                         class="form-control @error('password_confirmation') is-invalid @enderror"
+                         name="password_confirmation"
+                         autocomplete="new-password">
+
+                  @error('password_confirmation')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+                </div>
+
+             
+
+              </div>
+            </div>
+
+            <div class="card-footer text-right">
+              <button type="submit" class="btn btn-warning">
+                Save Changes
+              </button>
+            </div>
+
+          </form>
+          <!-- END FORM -->
+
+        </div>
+
       </div>
     </div>
   </div>
