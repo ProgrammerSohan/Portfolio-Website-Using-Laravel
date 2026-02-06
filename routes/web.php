@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/***for test */
+Route::get('/starter', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('frontend.home');
 });
+
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
