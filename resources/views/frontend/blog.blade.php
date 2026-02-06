@@ -1,4 +1,7 @@
 
+@extends('frontend.layouts.layout')
+
+@section('content')
 
   <header class="site-header parallax-bg">
             <div class="container">
@@ -178,3 +181,6 @@
             </div>
         </section>
         <!-- Quote-Area-End -->
+
+
+@endsection        
