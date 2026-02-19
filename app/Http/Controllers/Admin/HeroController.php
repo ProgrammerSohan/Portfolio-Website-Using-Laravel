@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hero;
 use Illuminate\Http\Request;
+use File;
 
 class HeroController extends Controller
 {
@@ -63,6 +64,12 @@ class HeroController extends Controller
 
          //dd($request->all());
          if($request->hasFile('image')){
+
+                $hero = Hero::first();
+                if($hero && File::exists(public_path($hero->image))){
+                    File::delete(public_path($hero->image));
+                }
+
                 //dd('hello');
                 $image = $request->file('image');
                 $imageName = rand().$image->getClientOriginalName();
