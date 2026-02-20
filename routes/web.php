@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,12 @@ Route::get('/starter', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('frontend.home');
-});
+});*/
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/blog', function(){
     return view('frontend.blog');
