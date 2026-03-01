@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TyperTitle;
 use Illuminate\Http\Request;
 
 class TyperTitleController extends Controller
@@ -30,8 +31,19 @@ class TyperTitleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        
+        //dd($request->all());
+        $request->validate([
+            'title'=> ['required', 'max:200']
+
+        ]);
+
+        $create = new TyperTitle();
+        $create->title = $request->title;
+        $create->save();
+        toastr()->success('Created Successfully', 'Congrats!!');
+       // return redirect()->back();
+       return redirect()->route('admin.typer-title.index');
+
     }
 
     /**
