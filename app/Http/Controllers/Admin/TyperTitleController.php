@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\TyperTitleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\TyperTitle;
 use Illuminate\Http\Request;
@@ -11,10 +12,10 @@ class TyperTitleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TyperTitleDataTable $dataTable)
     {
     
-        return view('admin.typer-title.index');
+        return $dataTable->render('admin.typer-title.index');
     
     }
 
