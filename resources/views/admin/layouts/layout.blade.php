@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Dashboard</title>
 
   <!-- General CSS Files -->
@@ -78,6 +79,8 @@
   <script src="{{asset('assets/js/page/forms-advanced-forms.js')}}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ 
  
   <!-- show dynamic validation errors -->
     <script>
@@ -90,13 +93,23 @@
     </script>
 
       <script>
-            $(document).ready(function(){
+            $(document).ready(function(){ 
+              //csrf token
+             
+              $.ajaxSetup({
+              headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+              });
+           
+
+              //sweet alert for delete
               $('body').on('click', '.delete-item', function(e){
                 e.preventDefault();
                 let deleteUrl = $(this).attr('href');
                 console.log(deleteUrl);
 
-               /* Swal.fire({
+               Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
                 icon: "warning",
@@ -108,7 +121,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'DELETE',
-                        url: '',
+                        url: deleteUrl,
                         success: function(data){
                            Swal.fire(
                             'Deleted!',
@@ -116,6 +129,7 @@
                             'success'
 
                            )
+                           window.location.reload();
                         },
                         error: function(xhr, status, error){
                           console.log(error);
@@ -126,7 +140,7 @@
                     
 
                 }
-                });*/
+                });
 
               });
 

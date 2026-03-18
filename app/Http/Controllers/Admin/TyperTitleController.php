@@ -90,7 +90,8 @@ class TyperTitleController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $title = TyperTitle::findOrFail($id);
+        $title->delete();
 
 
     
