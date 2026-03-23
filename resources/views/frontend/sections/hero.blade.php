@@ -19,3 +19,13 @@
 				</div>
 			</div>
 		</header>
+
+		@push('scripts')
+
+			<script>
+				@dd($typerTitles);
+				$('.header-area .typer-title').typer();
+
+			</script>
+			
+		@endpush
