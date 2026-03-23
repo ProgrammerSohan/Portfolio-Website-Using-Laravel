@@ -23,8 +23,16 @@
 		@push('scripts')
 
 			<script>
-				@dd($typerTitles);
-				$('.header-area .typer-title').typer();
+				@php
+					$titles = [];
+					foreach($typerTitles as $title){
+						$titles[] = $title->title;
+
+					}	
+					//dd($titles)
+					$titles = json_encode($titles);
+				@endphp
+				$('.header-area .typer-title').typer({!! $titles !!});
 
 			</script>
 			
